@@ -1,0 +1,15 @@
+laser	laser.wav
+hurt	hurt.wav
+explode		explodeShort.wav
+big_explode	big_explode.wav
+blip	blip.wav
+heal	heal.wav
+reflect	reflect.wav
+portal		portal.wav
+portal_charge	portal_charge.wav
+
+boss	dusk_boss.ogg
+tunnel	x-tunnel_new.ogg
+monolith	monolith.ogg
+sorrydave	sorrydave.ogg
+computer	computer.ogg

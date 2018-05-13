@@ -1,0 +1,31 @@
+reticle		reticle
+bullet1		bullet1
+bullet2		bullet2
+explosion	explosion
+blue_explosion	blue_explosion
+red_explosion	red_explosion
+scanlines	scanlines
+planet_background2	lv1_background
+star_background	lv2_background
+noise		noise
+vignette	vignette
+font/8bitoperator	font_1
+font/terminal		font_term
+new_title	title
+title2		title2
+title2_gamepad	title2_gamepad
+obelisk		obelisk
+portal		portal
+shield		shield
+shield_corner	shield_corner
+ea2		ea
+hal		hal
+hal_eye		hal_eye
+healthpickup	healthpickup
+healthpulse	healthpulse
+
+gradient	gradient
+noise2		starfield
+colorband	colorband
+lensflare	lensflare
+
