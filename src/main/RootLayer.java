@@ -12,6 +12,9 @@ import scenes.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static main.Input.Key.ALT;
+import static main.Input.Key.ENTER;
+
 public class RootLayer extends Layer {
 
     public enum State {
@@ -38,32 +41,39 @@ public class RootLayer extends Layer {
         loadTerminal();
     }
 
+    private boolean altEnterPressed = false;
     @Override
     public void update(double time, double delta) {
         Input.pollGamepad();
-        if (Input.isKeyNew(Input.Key.F5)) {
-            if (Window.isFullscreen())
-                Window.setWindowedPercent(.85, 16/9d);
-            else
-                Window.setFullscreen();
-        }
+
+        // check for alt+enter to toggle fullscreen
+        if (Input.isKeyDown(ALT) && Input.isKeyDown(ENTER)) {
+            if (!altEnterPressed) {
+                if (Window.isFullscreen())
+                    Window.setWindowedPercent(.85,16/9d);
+                else
+                    Window.setFullscreen();
+            }
+            altEnterPressed = true;
+        } else
+            altEnterPressed = false;
 
         if (updateState) {
             updateState = false;
             switch (state) {
                 case TITLE:
                     FontUtils.useMetric("font_1");
-                    FontUtils.setCharPixelWidth(12);
+                    //FontUtils.setCharPixelWidth(12);
                     scenes = title;
                     break;
                 case INGAME:
                     FontUtils.useMetric("font_1");
-                    FontUtils.setCharPixelWidth(12);
+                    //FontUtils.setCharPixelWidth(12);
                     scenes = ingame;
                     break;
                 case TERMINAL:
                     FontUtils.useMetric("font_term");
-                    FontUtils.setCharPixelWidth(9);
+                    //FontUtils.setCharPixelWidth(9);
                     scenes = terminal;
                     break;
             }
@@ -107,6 +117,8 @@ public class RootLayer extends Layer {
         setState(State.TITLE);
     }
     public void loadGame() {
+        Level.resetScore();
+        GameUI.reset();
         AudioPlayback.playMusic("tunnel",true);
         setState(State.INGAME);
     }

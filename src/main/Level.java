@@ -22,6 +22,7 @@ public class Level {
     private static final int PARTITION_SIZE = 100;
     private static final List<Entity> emptyList = new ArrayList<>();
     private static Level level;
+    private static int playerScore;
 
     private Player player;
     private volatile Map<Integer, List<Entity>> entityStore;
@@ -31,7 +32,7 @@ public class Level {
     private boolean renderHitboxes = false;
     private List<EntityGenerator> generators;
 
-    private int playerHealth, maxPlayerHealth, playerScore;
+    private int playerHealth, maxPlayerHealth;
     private int lastPlayerIndex;
     private float mapUpateCooldown;
 
@@ -50,7 +51,7 @@ public class Level {
     private Level(int levelNum) {
         player = new Player();
         playerHealth = maxPlayerHealth = 6;
-        playerScore = 0;
+        //playerScore = 0;
 
         lastPlayerIndex = 999;
 
@@ -320,6 +321,7 @@ public class Level {
         playerHealth = Math.min(maxPlayerHealth, playerHealth);
     }
     public void addScore(int s) { playerScore += s; }
+    public static void resetScore() { playerScore = 0; }
     public int getPlayerHealth() { return playerHealth; }
     public int getMaxPlayerHealth() { return maxPlayerHealth; }
     public int getPlayerScore() { return playerScore; }

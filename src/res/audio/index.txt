@@ -7,6 +7,8 @@ heal	heal.wav
 reflect	reflect.wav
 portal		portal.wav
 portal_charge	portal_charge.wav
+drum1	drum1.wav
+drum2	drum2.wav
 
 boss	dusk_boss.ogg
 tunnel	x-tunnel_new.ogg

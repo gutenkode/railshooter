@@ -59,6 +59,7 @@ public class RailHarness extends Entity {
                         numHarnesses--;
                         active = false;
                         AudioPlayback.playSfx("big_explode");
+                        Level.getInstance().addScore(BASE_SCORE*3);
                     }
                     damageAmt *= 1 + delta * 3;
                     rot.z = (int) ((knockback % 1 - .5f) * 15) / 15f;

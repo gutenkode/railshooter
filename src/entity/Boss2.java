@@ -165,6 +165,7 @@ public class Boss2 extends Entity {
         if (health <= 0) {
             health = 0;
             AudioPlayback.playSfx("big_explode");
+            Level.getInstance().addScore(BASE_SCORE*6);
         }
         GameUI.showBossHealth(true, "HAL 9000", health, maxHealth);
     }

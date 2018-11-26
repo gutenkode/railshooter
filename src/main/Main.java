@@ -28,7 +28,7 @@ public class Main {
         // youtu.be/C4_uIwsW9Oc
         // youtu.be/Qx-ogfjejwA
 
-        ErrorUtils.debug(true);
+        ErrorUtils.debug(false);
         Window.displayDeltaInTitle(true);
         Window.initWindowedPercent(.85, 16/9d);
         Window.setVsync(false);
@@ -62,18 +62,13 @@ public class Main {
         Window.loop(60);
     }
     private static void loadResources() {
-
-        for (String pn : Main.class.getModule().getPackages())
-            Main.class.getModule().addOpens(pn, FileIO.class.getModule());
-        FileIO.setResourceModule(Main.class.getModule());
-
         ShaderUtils.loadIndex("index.txt");
         TextureMap.loadIndex("index.txt");
         AudioLoader.loadIndex("index.txt");
 
-        FontUtils.loadMetric("font/terminal_metric","font_term");
-        FontUtils.loadMetric("font/8bit_metric","font_1");
-        FontUtils.setCharPixelWidth(12);
+        FontUtils.loadMetric("font/terminal","font_term");
+        FontUtils.loadMetric("font/8bit","font_1");
+        //FontUtils.setCharPixelWidth(12);
 
         MeshMap.add(StaticMeshBuilder.constructVAOFromOBJ("arwing",false), "arwing");
         MeshMap.add(StaticMeshBuilder.constructVAOFromOBJ("cube",false), "cube");

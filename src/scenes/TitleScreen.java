@@ -35,8 +35,9 @@ public class TitleScreen implements Scene {
         if (titleScroll < 0) {
             titleScroll = 0;
         }
-        if (Input.isKeyDown(Input.Key.YES) || Input.isKeyDown(Input.Key.NO))
+        if (Input.isKeyDown(Input.Key.YES) || Input.isKeyDown(Input.Key.NO)) {
             Post.getInstance().fadeTo(RootLayer.getInstance()::loadGame);
+        }
     }
 
     @Override
@@ -53,6 +54,7 @@ public class TitleScreen implements Scene {
             ShaderMap.use("particles");
             Uniform.vec("timestep", (float)time*.2f);
             Uniform.vec("distance", (float) particleDist);
+            Uniform.vec("color",1,1,1);
 
             trans.view.setIdentity();
             //trans.view.rotate(.1f,1,0,0);

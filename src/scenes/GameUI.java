@@ -37,6 +37,9 @@ public class GameUI implements Scene {
         showWinText = true;
     }
     public static boolean isShowingWinText() { return showWinText; }
+    public static void reset() {
+        showWinText = false;
+    }
 
     private Mesh text, keyboardHelpText, gamepadHelpText, pauseText, winText;
     private Transform trans;

@@ -25,7 +25,8 @@ public class Input {
         RIGHT(5, 15,11),// GLFW_GAMEPAD_BUTTON_DPAD_RIGHT);
         ENTER(6, -1,-1),
         BACKSPACE(7, -1,-1),
-        F5(8, -1,-1);
+        //F5(8, -1,-1),
+        ALT(8, -1,-1);
         
         int index, gamepadButton_macOS, gamepadButton_PC;
         Key(int i, int gm, int gp) {
@@ -162,8 +163,9 @@ public class Input {
                 case GLFW_KEY_BACKSPACE:
                     callbackAction(action, Key.BACKSPACE.index);
                     break;
-                case GLFW_KEY_F5:
-                    callbackAction(action, Key.F5.index);
+                case GLFW_KEY_LEFT_ALT:
+                case GLFW_KEY_RIGHT_ALT:
+                    callbackAction(action, Key.ALT.index);
                     break;
 
                 case GLFW_KEY_W:

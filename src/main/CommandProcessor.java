@@ -13,7 +13,7 @@ public class CommandProcessor {
         BOOT, GAME, CRASH, TERMINAL;
     }
     private static State state;
-    private static final String EXECUTABLE = "space.exe", README = "readme.txt";
+    private static final String EXECUTABLE = "space.exe", README = "readme.txt", CREDITS = "credits.txt";
 
 
     private static Process proc;
@@ -83,18 +83,14 @@ public class CommandProcessor {
                             "...                        ",
                             "...                        ",
                             "Loaded successfully.",
-                            "Type 'ENTER' to begin..."
+                            "Type 'BEGIN' to engage the enemy..."
                     };
+                case CREDITS:
                 case README:
                     return new String[] {
                             "Loading...",
                             "Execute action failed with status: 2",
                             "File is not executable."
-                    };
-                case "terminal.exe":
-                    state = State.TERMINAL;
-                    return new String[] {
-                            "Loading..."
                     };
                 default:
                     return new String[] {
@@ -118,15 +114,28 @@ public class CommandProcessor {
                     };
                 case README:
                     return new String[] {
-                            "==== Weyland Softworks Presents ====",
-                            "=Thank you for installing our latest",
-                            "=in interactive entertainment, Odyssey.",
-                            "=",
-                            "=YOU are the ace fighter pilot, LUKE.",
-                            "=Invade the DEATH STAR under construction",
-                            "=and DESTROY their commander.",
-                            "=Good luck!",
-                            "====== (c)2201 ======",
+                            "===== Weyland Softworks Presents =====",
+                            "= Thank you for installing our latest",
+                            "= in interactive entertainment for",
+                            "= your personal workstation.",
+                            "= ",
+                            "= YOU are the last remaining fighter",
+                            "= pilot able to repel the invasion of",
+                            "= the evil STROGGOS.  You must DESTROY",
+                            "= their commander and flagship, in",
+                            "= orbit around our STAR.  Good luck!",
+                            "==============    (c)2201    ==============",
+                    };
+                case CREDITS:
+                    return new String[] {
+                            "Code/Design:",
+                            "   Peter Gutenko",
+                            "Music:",
+                            "   X Tunnel Theme Remix - VinylCheese",
+                            "   Monolith theme - Francis Travis",
+                            "   Dusk Boss - Nick Nuwe",
+                            "Textures/Models:",
+                            "   Star Fox 2, Star Fox 64",
                     };
                 default:
                     return new String[] {
@@ -145,11 +154,11 @@ public class CommandProcessor {
                 case "ls":
                     return new String[] {
                             "..",
-                            "/usr",
-                            "/bin",
+                            //"/usr",
+                            //"/bin",
                             EXECUTABLE,
                             README,
-                            "credits.txt",
+                            CREDITS,
                     };
                 default:
                     return new String[] {
@@ -161,13 +170,13 @@ public class CommandProcessor {
     private static String[] processGame(String command) {
         command = command.trim().toLowerCase();
         switch (command) {
-            case "enter":
+            case "begin":
                 RootLayer.getInstance().loadTitleScreen();
                 return new String[0];
             default:
                 state = State.BOOT;
                 return new String[] {
-                        "Load aborted. Closing..."
+                        "Load aborted."
                 };
         }
     }

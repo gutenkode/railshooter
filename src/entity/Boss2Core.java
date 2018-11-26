@@ -69,6 +69,7 @@ public class Boss2Core extends Entity {
                     } else {
                         if (!defeated) {
                             AudioPlayback.playSfx("big_explode");
+                            Level.getInstance().addScore(BASE_SCORE*15);
                             AudioPlayback.stopMusic();
                             GameUI.showWinText();
                             defeated = true;
@@ -130,6 +131,13 @@ public class Boss2Core extends Entity {
         if (wallCooldown <= 0) {
             wallCooldown = .65+((double)health/maxHealth);
             Level.getInstance().addEntity(new BreakableWall(pos.x, pos.y, pos.z-1));
+
+            float o = 3.5f;
+            Level.getInstance().addEntity(new BreakableWall(pos.x-o, pos.y, pos.z-8));
+            Level.getInstance().addEntity(new BreakableWall(pos.x+o, pos.y, pos.z-8));
+            Level.getInstance().addEntity(new BreakableWall(pos.x, pos.y-o, pos.z-8));
+            Level.getInstance().addEntity(new BreakableWall(pos.x, pos.y+o, pos.z-8));
+
         }
     }
 

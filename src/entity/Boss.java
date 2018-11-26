@@ -20,8 +20,8 @@ public class Boss extends Entity {
     private Vector3f rot;
     private double clock;
     private int health, maxHealth, phase;
-    private double shootCooldown, damageCooldown, explosionCooldown, healthGainCooldown, deathDelay;
-    private boolean isFirstStep, isActive, isIntro;
+    private double shootCooldown, damageCooldown, explosionCooldown, healthGainCooldown, deathDelay, drumDelay;
+    private boolean isFirstStep, isActive, isIntro, drumFlag;
 
     public Boss(float x, float y, float z) {
         super(MeshMap.get("cube"));
@@ -42,6 +42,7 @@ public class Boss extends Entity {
         shootCooldown = .5;
         setActive(false);
         isFirstStep = true;
+        drumDelay = 2;
     }
 
     @Override
@@ -80,6 +81,18 @@ public class Boss extends Entity {
                 phase = 2;
             } else if (health < maxHealth*.75) {
                 phase = 1;
+            }
+            drumDelay -= delta;
+            if (drumDelay <= 0) {
+                drumFlag = !drumFlag;
+                double delay = .5-.25*(1-(float)health/maxHealth);
+                if (drumFlag) {
+                    AudioPlayback.playSfx("drum1");
+                    drumDelay = delay;
+                } else {
+                    AudioPlayback.playSfx("drum2");
+                    drumDelay = delay*3;
+                }
             }
         } else if (!isIntro && health <= 0) {
             deathDelay -= delta;
